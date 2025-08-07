@@ -1,34 +1,23 @@
 {
   "compilerOptions": {
-    /* Build Info */
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-
-    /* Target & Module */
     "target": "ES2022",
     "module": "ESNext",
-    "moduleResolution": "Bundler",
-
-    /* Language Features */
-    "useDefineForClassFields": true,
+    "moduleResolution": "node",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "jsx": "react-jsx",
-    "allowImportingTsExtensions": true,
-    "verbatimModuleSyntax": true,
-    "moduleDetection": "force",
+    "strict": true,
     "noEmit": true,
-
-    /* Path Aliases */
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "moduleDetection": "force",
+    "useDefineForClassFields": true,
     "paths": {
       "@/*": ["./src/*"]
-    },
-
-    /* Type Checking & Linting */
-    "skipLibCheck": true,
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    }
   },
   "include": ["src"]
 }
