@@ -1,20 +1,28 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-import { Button, HStack } from "@chakra-ui/react";
-import { BeatLoader } from "react-spinners";
+import { Grid, GridItem } from "@chakra-ui/react";
+import { Show } from "@chakra-ui/react";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <HStack>
-        <Button colorPalette="blue">Click me</Button>
-        <Button>Click me</Button>
-      </HStack>
-    </>
+    <Grid
+      templateAreas={{
+        base: `"nav" "main"`,
+        md: `"nav nav" "main aside"`,
+        lg: `"nav nav" "aside main"`,
+      }}
+    >
+      <GridItem area="nav" bg="coral">
+        Nav
+      </GridItem>
+      <Show above="md">
+        <GridItem area="aside" bg="gold">
+          Aside
+        </GridItem>
+      </Show>
+      <GridItem area="main" bg="dodgerblue">
+        Main
+      </GridItem>
+    </Grid>
   );
 }
 
