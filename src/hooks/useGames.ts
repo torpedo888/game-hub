@@ -22,26 +22,31 @@ interface FetchGamesResponse {
 const useGames = () => {
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
+  const [isLoading, setLoading] = useState(false);
 
   useEffect(() => {
 
     const abortController = new AbortController();
 
+    setLoading(true);
+
     apiClient
       .get<FetchGamesResponse>("/games", { signal: abortController.signal })
       .then((response) => {
         setGames(response.data.results);
+        setLoading(false);
       })
       .catch((error) => {
        if (error.name === "CanceledError") return;
        console.log(error); 
         setError("Failed to fetch games: " + error.message);
+        setLoading(false);
       });
 
       return () => abortController.abort();
   }, []);
 
-  return { games, error };
+  return { games, error, isLoading };
 }
 
   export default useGames;
